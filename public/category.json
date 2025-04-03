@@ -1,0 +1,26 @@
+[
+  {
+    "product_id": 0,
+    "category": "all"
+  },
+  {
+    "product_id": 1,
+    "category": "laptop"
+  },
+  {
+    "product_id": 2,
+    "category": "phone"
+  },
+  {
+    "product_id": 3,
+    "category": "smart watch"
+  },
+  {
+    "product_id": 4,
+    "category": "macbook"
+  },
+  {
+    "product_id": 5,
+    "category": "accessories"
+  }
+]

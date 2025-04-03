@@ -1,0 +1,146 @@
+[
+  {
+    "product_id": 2,
+    "product_title": "iPhone 14 Pro",
+    "product_image": "https://i.ibb.co.com/PZZ12WZ/i-Phone-14-Pro-Space-Black-1138.jpg",
+    "category": "phone",
+    "price": 999.99,
+    "description": "Apple iPhone 14 Pro with A15 Bionic chip, 128GB storage.",
+    "Specification": [
+      "A15 Bionic chip",
+      "6.1 inch OLED display",
+      "128GB storage",
+      "Triple camera system"
+    ],
+    "availability": true,
+    "rating": 4.8
+  },
+  {
+    "product_id": 3,
+    "product_title": "Samsung Galaxy Watch 5",
+    "product_image": "https://i.ibb.co.com/7QQCRCZ/Galaxy-Watch5-5-800x800.jpg",
+    "category": "smart watch",
+    "price": 249.99,
+    "description": "Samsung Galaxy Watch 5 with heart rate monitor and fitness tracking.",
+    "Specification": [
+      "1.4 inch AMOLED display",
+      "Heart rate monitor",
+      "GPS",
+      "Water resistant"
+    ],
+    "availability": true,
+    "rating": 4.4
+  },
+  {
+    "product_id": 4,
+    "product_title": "MacBook Pro 16-inch",
+    "product_image": "https://i.ibb.co.com/7rPVNNd/images-3.jpg",
+    "category": "macbook",
+    "price": 2399.99,
+    "description": "Apple MacBook Pro 16-inch with M1 Pro chip, 512GB storage.",
+    "Specification": [
+      "M1 Pro chip",
+      "16GB RAM",
+      "512GB SSD",
+      "16-inch Retina display"
+    ],
+    "availability": false,
+    "rating": 4.9
+  },
+  {
+    "product_id": 5,
+    "product_title": "Sony WH-1000XM5 Headphones",
+    "product_image": "https://i.ibb.co.com/RgjYrrq/download-3.jpg",
+    "category": "accessories",
+    "price": 349.99,
+    "description": "Sony WH-1000XM5 noise-canceling over-ear headphones.",
+    "Specification": [
+      "Noise cancellation",
+      "30-hour battery life",
+      "Bluetooth 5.0",
+      "Quick charge feature"
+    ],
+    "availability": true,
+    "rating": 4.7
+  },
+  {
+    "product_id": 6,
+    "product_title": "Microsoft Surface Laptop 4",
+    "product_image": "https://i.ibb.co.com/0sjX76M/download-4.jpg",
+    "category": "laptop",
+    "price": 1299.99,
+    "description": "Microsoft Surface Laptop 4 with Intel i7, 16GB RAM, 512GB SSD.",
+    "Specification": [
+      "Intel i7 11th Gen",
+      "16GB RAM",
+      "512GB SSD",
+      "13.5 inch PixelSense display"
+    ],
+    "availability": true,
+    "rating": 4.6
+  },
+  {
+    "product_id": 7,
+    "product_title": "Google Pixel 7",
+    "product_image": "https://i.ibb.co.com/nnsb14X/download-5.jpg",
+    "category": "phone",
+    "price": 649.99,
+    "description": "Google Pixel 7 with Tensor chip, 128GB storage.",
+    "Specification": [
+      "Google Tensor chip",
+      "6.3 inch OLED display",
+      "128GB storage",
+      "Dual camera system"
+    ],
+    "availability": false,
+    "rating": 4.4
+  },
+  {
+    "product_id": 8,
+    "product_title": "Apple Watch Series 8",
+    "product_image": "https://i.ibb.co.com/k9vBT9K/download-6.jpg",
+    "category": "smart watch",
+    "price": 399.99,
+    "description": "Apple Watch Series 8 with advanced health tracking.",
+    "Specification": [
+      "Blood Oxygen sensor",
+      "ECG app",
+      "Always-on Retina display",
+      "GPS + Cellular"
+    ],
+    "availability": true,
+    "rating": 4.8
+  },
+  {
+    "product_id": 9,
+    "product_title": "MacBook Air 13-inch",
+    "product_image": "https://i.ibb.co.com/VvSgTyD/download-7.jpg",
+    "category": "macbook",
+    "price": 1099.99,
+    "description": "Apple MacBook Air 13-inch with M1 chip, 256GB storage.",
+    "Specification": [
+      "M1 chip",
+      "8GB RAM",
+      "256GB SSD",
+      "13.3-inch Retina display"
+    ],
+    "availability": true,
+    "rating": 4.7
+  },
+  {
+    "product_id": 10,
+    "product_title": "Logitech MX Master 3S Mouse",
+    "product_image": "https://i.ibb.co.com/Y0Bt5KY/images-4.jpg",
+    "category": "accessories",
+    "price": 99.99,
+    "description": "Logitech MX Master 3S wireless mouse with ergonomic design.",
+    "Specification": [
+      "Wireless",
+      "Ergonomic design",
+      "4000 DPI sensor",
+      "USB-C charging"
+    ],
+    "availability": true,
+    "rating": 4.5
+  }
+]

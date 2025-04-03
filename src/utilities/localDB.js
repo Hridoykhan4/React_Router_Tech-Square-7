@@ -1,15 +1,15 @@
-const getStoredReadList = () => {
-  const storedCart = localStorage.getItem("read-list");
+const getStoredCartList = () => {
+  const storedCart = localStorage.getItem("cart-list");
   return storedCart ? JSON.parse(storedCart) : [];
 };
 
-const addToStoredReadList = (id) => {
-  const storedList = getStoredReadList();
-  if (storedList.includes(id)) {
+const addToCart = (product) => {
+  const storedList = getStoredCartList();
+  if (storedList.find((list) => list.product_id === product.product_id)) {
     alert("Dhuru Shala");
   } else {
-    storedList.push(id);
-    localStorage.setItem("read-list", JSON.stringify(storedList));
+    storedList.push(product);
+    localStorage.setItem("cart-list", JSON.stringify(storedList));
   }
 };
 
@@ -18,19 +18,14 @@ const getStoredWishList = () => {
   return storedWishList ? JSON.parse(storedWishList) : [];
 };
 
-const addToStoredWishList = (id) => {
+const addToStoredWishList = (product) => {
   const wishItems = getStoredWishList();
-  if (wishItems.includes(id)) {
+  if (wishItems.find((list) => list.product_id === product.product_id)) {
     alert("");
   } else {
-    wishItems.push(id);
+    wishItems.push(product);
     localStorage.setItem("wish-list", JSON.stringify(wishItems));
   }
 };
 
-export {
-  addToStoredReadList,
-  addToStoredWishList,
-  getStoredReadList,
-  getStoredWishList,
-};
+export { addToCart, addToStoredWishList, getStoredCartList, getStoredWishList };

@@ -3,3 +3,8 @@
 @plugin "daisyui" {
   themes: light --default, dark --prefersdark;
 }
+
+html {
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+}

@@ -1,5 +1,7 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 const Navbar = () => {
+  const { pathname } = useLocation();
+
   const links = (
     <>
       <li>
@@ -14,9 +16,19 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
+          to={`/about`}
+          className={({ isActive }) =>
+            `${isActive && "text-amber-200 underline font-bold"} text-[17px]`
+          }
+        >
+          About
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
           to={`/statistics`}
           className={({ isActive }) =>
-            `${isActive && "text-amber-200 font-bold"} text-[17px]`
+            `${isActive && "text-amber-200 underline  font-bold"} text-[17px]`
           }
         >
           Statistics
@@ -26,7 +38,7 @@ const Navbar = () => {
         <NavLink
           to={`/dashboard`}
           className={({ isActive }) =>
-            `${isActive && "text-amber-200 font-bold"} text-[17px]`
+            `${isActive && "text-amber-200  underline font-bold"} text-[17px]`
           }
         >
           Dashboard
@@ -36,7 +48,7 @@ const Navbar = () => {
   );
   return (
     <>
-      <div className="navbar rounded-md   shadow-sm">
+      <div className={`navbar ${pathname === "/" && "bg-[#9538E2]"} shadow-sm`}>
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -47,13 +59,12 @@ const Navbar = () => {
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                {" "}
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
                   d="M4 6h16M4 12h8m-8 6h16"
-                />{" "}
+                />
               </svg>
             </div>
             <ul

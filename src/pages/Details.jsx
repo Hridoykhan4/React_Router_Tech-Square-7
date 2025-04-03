@@ -1,19 +1,33 @@
-import React from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import ReusableBanner from "../components/ReusableBanner";
 import { useEffect, useState } from "react";
+import {
+  addToCart,
+  addToStoredWishList,
+  getStoredWishList,
+} from "../utilities/localDB";
 
 const Details = () => {
   const allProducts = useLoaderData();
   const { productId } = useParams();
   const [product, setProduct] = useState({});
   const [ratingState, setRateState] = useState("");
+  const [isTabbed, setIsTabbed] = useState(false);
   useEffect(() => {
     const matchedProduct =
       allProducts.find(
         (product) => product.product_id === parseInt(productId)
       ) || {};
     setProduct(matchedProduct);
+
+    const storedItems = getStoredWishList();
+    const isExist = storedItems.find(
+      (pro) => pro.product_id === matchedProduct.product_id
+    );
+    if (isExist) {
+      setIsTabbed(true);
+    }
+
     if (product.rating > 4 && product.rating <= 4.5) {
       setRateState(
         <>
@@ -21,7 +35,7 @@ const Details = () => {
           <i className="fa-solid text-amber-600 fa-star"></i>
           <i className="fa-solid text-amber-600 fa-star"></i>
           <i className="fa-solid text-amber-600 fa-star"></i>
-          <i class="fa-solid text-amber-600 fa-star-half-stroke"></i>
+          <i className="fa-solid text-amber-600 fa-star-half-stroke"></i>
         </>
       );
     }
@@ -48,14 +62,14 @@ const Details = () => {
     rating,
   } = product || {};
 
-  const handleAddToCart = product => {
-    console.log(product)
-  }
+  const handleAddToCart = (product) => {
+    addToCart(product);
+  };
 
-
-  const handleAddToWishList = product => {
-    console.log(product)
-  }
+  const handleAddToWishList = (product) => {
+    addToStoredWishList(product);
+    setIsTabbed(true);
+  };
 
   return (
     <div className="pb-5">
@@ -70,7 +84,7 @@ const Details = () => {
             have it all!
           </p>
 
-          <div className="flex items-center -mb-24 bg-white text-black w-[93%] gap-4 sm:w-[80%] mt-6 border p-3 mx-auto sm:-mb-44 rounded">
+          <div className="flex  items-center -mb-24 bg-white text-black w-[93%] gap-4 sm:w-[80%] mt-6  p-4  mx-auto sm:-mb-44 rounded">
             <figure className="sm:w-[40%]">
               <img
                 src={product_image}
@@ -104,7 +118,7 @@ const Details = () => {
                 </span>
               </div>
 
-              <div class="flex gap-4 my-5">
+              <div className="flex gap-4 my-5">
                 <button
                   onClick={() => handleAddToCart(product)}
                   className="flex items-center gap-2 bg-blue-600 btn text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-700 transition"
@@ -113,13 +127,13 @@ const Details = () => {
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke-width="2"
+                    strokeWidth="2"
                     stroke="currentColor"
-                    class="w-5 h-5"
+                    className="w-5 h-5"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M3 3h2l.4 2M7 13h10l4-8H5.4m1.6 8L5 9m0 0L4 5m1 4h16m-9 9a1 1 0 100 2 1 1 0 000-2zm6 0a1 1 0 100 2 1 1 0 000-2z"
                     />
                   </svg>
@@ -128,19 +142,20 @@ const Details = () => {
 
                 <button
                   onClick={() => handleAddToWishList(product)}
+                  disabled={isTabbed}
                   className="flex items-center gap-2 bg-gray-200 btn text-gray-700 px-4 py-2 rounded-lg shadow-md hover:bg-red-500 hover:text-white transition"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke-width="2"
+                    strokeWidth="2"
                     stroke="currentColor"
-                    class="w-5 h-5"
+                    className="w-5 h-5"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.68l-1.06-1.07a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"
                     />
                   </svg>

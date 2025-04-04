@@ -14,11 +14,13 @@ const Navbar = () => {
 
   const handleTheme = (e) => {
     const themeState = e.target.checked ? "forest" : "light";
-     themeState === 'forest' ? toast.success('Theme Updated To Forest!', {
-      position: 'bottom-end'
-     }) : toast.success('Theme Updated To Light!', {
-      position : 'bottom right'
-     });
+    themeState === "forest"
+      ? toast.success("Theme Updated To Forest!", {
+          position: "bottom-end",
+        })
+      : toast.success("Theme Updated To Light!", {
+          position: "bottom right",
+        });
     setTheme(themeState);
     localStorage.setItem("theme", themeState);
   };
@@ -69,12 +71,43 @@ const Navbar = () => {
   );
   return (
     <>
-      <div
-        className={`navbar ${
-          pathname === "/" && "bg-[#9538E2]"
-        } shadow-sm px-5`}
-      >
+      <div className={`navbar ${pathname === "/" && "bg-[#9538E2]"} shadow-sm`}>
         <div className="navbar-start">
+          <Link to="/" className="text-xl ">
+            Tech Square
+          </Link>
+        </div>
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-1">{links}</ul>
+        </div>
+        <div className="navbar-end sm:gap-3 gap-1">
+          <input
+            checked={theme === "forest"}
+            type="checkbox"
+            onClick={handleTheme}
+            className="toggle theme-controller"
+          />
+
+          <div className="relative">
+            <details className=" dropdown">
+              <summary className="fa-solid m-1  text-md bg-white/20 rounded-full p-2 fa-cart-shopping"></summary>
+              <ul className="menu dropdown-content sm:w-52 w-36 right-2 bg-base-100/80 rounded-box z-1  p-2 shadow-sm">
+                <p className="font-bold">{addCartCount} Item in Cart</p>
+                <hr className="pb-2"/>
+                <Link className="btn btn-sm bg-[#9538E2] text-white" to="/dashboard">Dashboard</Link>
+              </ul>
+            </details>
+            <span className="absolute font-bold text-lg -top-4 left-5">
+              {addCartCount}
+            </span>
+          </div>
+
+          <div className="relative">
+            <i className="fa-regular text-md  bg-white/30 rounded-full p-2 fa-heart"></i>
+            <span className="absolute -right-1 font-bold text-lg -top-2">
+              {addWishCount}
+            </span>
+          </div>
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
@@ -94,41 +127,10 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content right-0 bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               {links}
             </ul>
-          </div>
-          <Link
-            to="/"
-            className="text-xl"
-          >
-            Tech Square
-          </Link>
-        </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{links}</ul>
-        </div>
-        <div className="navbar-end gap-4">
-          <input
-          checked={theme === 'forest'}
-            type="checkbox"
-            onClick={handleTheme}
-            className="toggle theme-controller"
-          />
-
-          <div className="relative">
-            <i className="fa-solid text-md bg-white/30 rounded-full p-2 fa-cart-shopping">
-              <span className="absolute font-bold text-lg -top-2">
-                {addCartCount}
-              </span>
-            </i>
-          </div>
-          <div className="relative">
-            <i className="fa-regular text-md  bg-white/30 rounded-full p-2 fa-heart"></i>
-            <span className="absolute -right-1 font-bold text-lg -top-2">
-              {addWishCount}
-            </span>
           </div>
         </div>
       </div>

@@ -100,7 +100,7 @@ const Details = () => {
     const stored = getStoredWishList();
     const isMatched = stored.find((p) => p.product_id === product.product_id);
     if (!isMatched) {
-      setAddWishCount((prev) => prev + 1);
+      setAddWishCount((prev) => parseInt(prev) + 1);
     }
 
     setIsTabbed(true);
@@ -124,7 +124,7 @@ const Details = () => {
             have it all!
           </p>
 
-          <div className="flex  items-center -mb-24 bg-white text-black w-[93%] gap-4 sm:w-[80%] mt-6  p-4  mx-auto sm:-mb-44 rounded">
+          <div className="flex flex-col items-center -mb-24 bg-white text-black w-[93%] gap-4 sm:w-[80%] mt-6  p-4  mx-auto sm:-mb-44 rounded">
             <figure className="sm:w-[40%]">
               <img
                 src={product_image}
@@ -158,7 +158,7 @@ const Details = () => {
                 </span>
               </div>
 
-              <div className="flex gap-4 my-5">
+              <div className="flex flex-col sm:flex-row gap-4 my-5">
                 <button
                   onClick={() => handleAddToCart(product)}
                   className="flex items-center gap-2 bg-blue-600 btn text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-700 transition"

@@ -152,15 +152,15 @@ const Dashboard = () => {
       <div className="w-11/12 mx-auto my-5">
         {activeState === "cart" ? (
           <>
-            <div className="flex justify-between items-center mb-6">
+            <div className="flex sm:justify-between flex-col sm:flex-row sm:items-center mb-6">
               <h3 className="font-bold text-2xl">Cart</h3>
-              <div className="flex gap-3 items-center">
+              <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
                 <h3 className=" font-bold text-2xl">
                   Total Cost: $ {totalPrice}
                 </h3>
                 <button
                   onClick={handleSort}
-                  className="flex items-center btn gap-2 px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition"
+                  className="flex self-start items-center btn gap-2 px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition"
                 >
                   Sort by Price
                 </button>
@@ -168,7 +168,7 @@ const Dashboard = () => {
                 <button
                   onClick={handlePurChase}
                   disabled={cards.length === 0 || totalCost === 0}
-                  className="flex items-center btn gap-2 px-4 py-2 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition"
+                  className="flex self-start items-center btn gap-2 px-4 py-2 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition"
                 >
                   Purchase
                 </button>

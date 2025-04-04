@@ -31,7 +31,7 @@ const Home = () => {
           Explore Cutting-Edge Gadgets
         </h3>
 
-        <div className="flex flex-col mt-10 md:flex-row gap-5">
+        <div className="flex flex-col mt-10 md:flex-row gap-9 sm:gap-4">
           <div className="sm:w-2/12">
             <Categories categories={categories}></Categories>
           </div>

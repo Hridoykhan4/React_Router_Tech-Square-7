@@ -38,7 +38,7 @@ const MainLayout = () => {
       <PriceContext.Provider value={[totalPrice, setTotalPrice]}>
         <WishContext.Provider value={[addWishCount, setAddWishCount]}>
           <CartContext.Provider value={[addCartCount, setAddCartCount]}>
-            <header className="mt-4  border-black/20 mx-4">
+            <header className="mt-4 border-black/20 mx-4">
               <Navbar></Navbar>
             </header>
 

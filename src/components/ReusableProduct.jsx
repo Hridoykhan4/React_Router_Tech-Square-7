@@ -1,7 +1,7 @@
 const ReusableProduct = ({ product, children }) => {
   const { product_image, product_title, price, description } = product;
   return (
-    <div className=" bg-base-100 items-start justify-start shadow-xl flex space-y-4 my-4">
+    <div className="flex-col sm:flex-row bg-base-100 items-start justify-start shadow-xl flex space-y-4 my-4">
       <figure className="h-44 items-start ">
         <img
           className="w-full h-full object-cover"

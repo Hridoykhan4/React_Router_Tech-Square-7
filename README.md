@@ -1,12 +1,23 @@
-# React + Vite
+# Live Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+https://techsquarerouter.netlify.app/
 
-Currently, two official plugins are available:
+# React Fundamental concepts
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Components: The entire application is composed of reusable React components, such as Navbar, Footer, Product, and Banner.
+1. JSX: JSX syntax is used to write HTML-like code within JavaScript, making component structure more readable and expressive.
+1. LocalStorage: LocalStorage is used alongside Context API to persist data across sessions allowing users to retain their cart and wishlist items even after page reloads.
+1. useEffect Hook: The useEffect hook manages side effects such as data fetching from local storage synchronizing component states, and performing actions based on specific dependencies
 
-## Expanding the ESLint configuration
+# I use LocatStorage in this Project
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+LocalStorage works alongside Context API: the context initializes its state based on saved LocalStorage data when the app loads, and updates LocalStorage whenever items are added or removed from the cart and wishlist.
+
+# 5features of this Project
+
+1.Interactive Shopping Cart and Wishlist
+2.Product Filtering and Sorting
+3.Detailed Product Pages
+4.Dynamic Navbar with Active Route Indication
+5.404 Error Page and Page-Specific Backgrounds
+6.Explored Context API

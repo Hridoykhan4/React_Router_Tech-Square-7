@@ -6,9 +6,18 @@ import {
   YAxis,
   ResponsiveContainer,
   Tooltip,
+  AreaChart,
+  Area,
+  ScatterChart,
+  Scatter,
+  ZAxis,
 } from "recharts";
+import ReusableBanner from "../components/ReusableBanner";
+
 const Statistics = () => {
   const allProducts = useLoaderData();
+
+  // Function to generate the custom path for the Triangle Bar shape
   const getPath = (x, y, width, height) =>
     `M${x},${y + height}
          C${x + width / 3},${y + height} ${x + width / 2},${y + height / 3} ${
@@ -19,21 +28,65 @@ const Statistics = () => {
     } ${x + width}, ${y + height}
          Z`;
 
+  // Custom TriangleBar for the bars
   const TriangleBar = (props) => {
     const { fill, x, y, width, height } = props;
-
     return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;
   };
+
   return (
-    <div className="my-4">
-      <ResponsiveContainer height={300}>
-        <BarChart data={allProducts}>
-          <XAxis dataKey="product_title" />
-          <YAxis />
-          <Tooltip></Tooltip>
-          <Bar dataKey="price" fill="#8884d8" shape={<TriangleBar />} />
-        </BarChart>
-      </ResponsiveContainer>
+    <div className="">
+      <ReusableBanner>
+        <div className="text-center bg-[#9538E2] text-white space-y-4 py-5">
+          <h2 className="font-bold text-2xl md:text-3xl lg:text-3xl">
+            Statistics
+          </h2>
+          <p>
+            Explore the latest gadgets that will take your experience to the
+            next level. From smart devices to the coolest accessories, we have
+            it all!
+          </p>
+        </div>
+      </ReusableBanner>
+
+      <div className="mt-7">
+        <ResponsiveContainer width="100%" height={400}>
+          <BarChart data={allProducts}>
+            <XAxis dataKey="product_title" />
+            <YAxis />
+            <Tooltip />
+
+            <Bar dataKey="price" fill="#8884d8" shape={<TriangleBar />} />
+
+            <Area
+              type="monotone"
+              dataKey="price"
+              stroke="#ff7300"
+              fill="#ff7300"
+              fillOpacity={0.3}
+            />
+          </BarChart>
+        </ResponsiveContainer>
+
+        <ResponsiveContainer width="100%" height={400}>
+          <ScatterChart>
+            <XAxis dataKey="product_title" />
+            <YAxis />
+            <ZAxis type="number" dataKey="rating" range={[0, 400]} />
+            <Tooltip />
+
+            <Scatter
+              name="Rating"
+              data={allProducts.map((product) => ({
+                x: product.product_title,
+                y: product.price,
+                z: product.rating,
+              }))}
+              fill="#82ca9d"
+            />
+          </ScatterChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 };

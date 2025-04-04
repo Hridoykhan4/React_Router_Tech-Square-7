@@ -1,18 +1,26 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import ReusableBanner from "../components/ReusableBanner";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   addToCart,
   addToStoredWishList,
+  CartContext,
+  getStoredCartList,
   getStoredWishList,
+  WishContext,
 } from "../utilities/localDB";
+import { PriceContext } from "../utilities/PriceContext";
 
 const Details = () => {
+  const [addWishCount, setAddWishCount] = useContext(WishContext);
+  const [addCartCount, setAddCartCount] = useContext(CartContext);
   const allProducts = useLoaderData();
   const { productId } = useParams();
   const [product, setProduct] = useState({});
   const [ratingState, setRateState] = useState("");
   const [isTabbed, setIsTabbed] = useState(false);
+  const [totalPrice, setTotalPrice] = useContext(PriceContext);
+
   useEffect(() => {
     const matchedProduct =
       allProducts.find(
@@ -63,13 +71,45 @@ const Details = () => {
   } = product || {};
 
   const handleAddToCart = (product) => {
+    const newTotal = totalPrice + product.price;
+
+    if (newTotal > 3000) {
+      alert("⚠️ Your total is crossing 3000! Please check before buying.");
+      return;
+    }
+
+    const stored = getStoredCartList();
+    const isMatched = stored.find((p) => p.product_id === product.product_id);
+
+    if (!isMatched) {
+      setAddCartCount((prev) => prev + 1);
+      setTotalPrice(newTotal);
+    }
+
     addToCart(product);
   };
+  useEffect(() => {
+    localStorage.setItem("total-price", totalPrice);
+  }, [totalPrice]);
+
+  useEffect(() => {
+    localStorage.setItem("count", addCartCount);
+  }, [addCartCount]);
 
   const handleAddToWishList = (product) => {
-    addToStoredWishList(product);
+    const stored = getStoredWishList();
+    const isMatched = stored.find((p) => p.product_id === product.product_id);
+    if (!isMatched) {
+      setAddWishCount((prev) => prev + 1);
+    }
+
     setIsTabbed(true);
+    addToStoredWishList(product);
   };
+
+  useEffect(() => {
+    localStorage.setItem("wish-count", addWishCount);
+  }, [addWishCount]);
 
   return (
     <div className="pb-5">

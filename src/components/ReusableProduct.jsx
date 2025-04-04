@@ -1,5 +1,5 @@
 const ReusableProduct = ({ product, children }) => {
-  const { product_image, product_title, price, product_id , description} = product;
+  const { product_image, product_title, price, description } = product;
   return (
     <div className=" bg-base-100 items-start justify-start shadow-xl flex space-y-4 my-4">
       <figure className="h-44 items-start ">

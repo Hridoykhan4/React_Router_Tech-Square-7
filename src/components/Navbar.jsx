@@ -1,6 +1,21 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { CartContext, WishContext } from "../utilities/localDB";
 const Navbar = () => {
   const { pathname } = useLocation();
+  const [addCartCount] = useContext(CartContext);
+  const [addWishCount] = useContext(WishContext);
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+  useEffect(() => {
+    document.querySelector("html").setAttribute("data-theme", theme);
+  }, [theme]);
+
+  const handleTheme = (e) => {
+    const themeState = e.target.checked ? "forest" : "light";
+    setTheme(themeState);
+    localStorage.setItem("theme", themeState);
+  };
 
   const links = (
     <>
@@ -48,7 +63,11 @@ const Navbar = () => {
   );
   return (
     <>
-      <div className={`navbar ${pathname === "/" && "bg-[#9538E2]"} shadow-sm`}>
+      <div
+        className={`navbar ${
+          pathname === "/" && "bg-[#9538E2]"
+        } shadow-sm px-5`}
+      >
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -74,17 +93,36 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">Tech Square</a>
+          <Link
+            to="/"
+            className="text-xl"
+          >
+            Tech Square
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end gap-4">
-          <div>
-            <i className="fa-solid text-md bg-white rounded-full p-2 fa-cart-shopping"></i>
+          <input
+          checked={theme === 'forest'}
+            type="checkbox"
+            onClick={handleTheme}
+            className="toggle theme-controller"
+          />
+
+          <div className="relative">
+            <i className="fa-solid text-md bg-white/30 rounded-full p-2 fa-cart-shopping">
+              <span className="absolute font-bold text-lg -top-2">
+                {addCartCount}
+              </span>
+            </i>
           </div>
-          <div>
-            <i className="fa-regular text-md  bg-white rounded-full p-2 fa-heart"></i>
+          <div className="relative">
+            <i className="fa-regular text-md  bg-white/30 rounded-full p-2 fa-heart"></i>
+            <span className="absolute -right-1 font-bold text-lg -top-2">
+              {addWishCount}
+            </span>
           </div>
         </div>
       </div>

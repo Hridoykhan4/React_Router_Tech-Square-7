@@ -9,10 +9,10 @@ const Home = () => {
     <>
       <ReusableBanner>
         <div className="text-center bg-[#9538E2] text-white space-y-4  py-2">
-          <h2 className="font-extrabold text-2xl md:text-3xl lg:text-4xl">
+          <h2 className="font-extrabold px-5 text-2xl md:text-3xl lg:text-4xl">
             Upgrade Your Tech Accessorize with <br /> Gadget Heaven Accessories
           </h2>
-          <p className="">
+          <p className="w-11/12 mx-auto">
             Explore the latest gadgets that will take your experience to the{" "}
             <br /> next level. From smart devices to the coolest accessories, we
             have it all!

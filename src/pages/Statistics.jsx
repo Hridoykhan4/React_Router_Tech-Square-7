@@ -6,11 +6,7 @@ import {
   YAxis,
   ResponsiveContainer,
   Tooltip,
-  AreaChart,
   Area,
-  ScatterChart,
-  Scatter,
-  ZAxis,
 } from "recharts";
 import ReusableBanner from "../components/ReusableBanner";
 
@@ -66,25 +62,6 @@ const Statistics = () => {
               fillOpacity={0.3}
             />
           </BarChart>
-        </ResponsiveContainer>
-
-        <ResponsiveContainer width="100%" height={400}>
-          <ScatterChart>
-            <XAxis dataKey="product_title" />
-            <YAxis />
-            <ZAxis type="number" dataKey="rating" range={[0, 400]} />
-            <Tooltip />
-
-            <Scatter
-              name="Rating"
-              data={allProducts.map((product) => ({
-                x: product.product_title,
-                y: product.price,
-                z: product.rating,
-              }))}
-              fill="#82ca9d"
-            />
-          </ScatterChart>
         </ResponsiveContainer>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import { createContext } from "react";
+import toast from "react-hot-toast";
 
 const getStoredCartList = () => {
   const storedCart = localStorage.getItem("cart-list");
@@ -8,8 +9,11 @@ const getStoredCartList = () => {
 const addToCart = (product) => {
   const storedList = getStoredCartList();
   if (storedList.find((list) => list.product_id === product.product_id)) {
-    alert("Dhuru Shala");
+    toast.error("Already Added", {
+      position: "bottom-right",
+    });
   } else {
+    toast.success("Product added successfully to cart!");
     storedList.push(product);
     localStorage.setItem("cart-list", JSON.stringify(storedList));
   }
@@ -33,8 +37,13 @@ const removeFromCart = (id) => {
 const addToStoredWishList = (product) => {
   const wishItems = getStoredWishList();
   if (wishItems.find((list) => list.product_id === product.product_id)) {
-    alert("");
+    toast.error("Already Added", {
+      position: "bottom-right",
+    });
   } else {
+    toast.success("Product added successfully to Wishlist!", {
+      position: "bottom-right",
+    });
     wishItems.push(product);
     localStorage.setItem("wish-list", JSON.stringify(wishItems));
   }

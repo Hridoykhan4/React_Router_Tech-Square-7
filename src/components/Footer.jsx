@@ -7,7 +7,7 @@ const Footer = () => {
     <>
       <footer
         className={` sm:footer-horizontal  bg-base-200 ${
-          pathname.includes("dashboard") && "mt-32"
+          pathname.includes("dashboard") && "mt-12"
         } text-base-content ${
           pathname.includes("detail") && "-mt-24 sm:mt-44"
         }`}

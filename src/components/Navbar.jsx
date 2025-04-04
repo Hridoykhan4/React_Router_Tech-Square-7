@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { CartContext, WishContext } from "../utilities/localDB";
+import toast from "react-hot-toast";
 const Navbar = () => {
   const { pathname } = useLocation();
   const [addCartCount] = useContext(CartContext);
@@ -13,6 +14,11 @@ const Navbar = () => {
 
   const handleTheme = (e) => {
     const themeState = e.target.checked ? "forest" : "light";
+     themeState === 'forest' ? toast.success('Theme Updated To Forest!', {
+      position: 'bottom-end'
+     }) : toast.success('Theme Updated To Light!', {
+      position : 'bottom right'
+     });
     setTheme(themeState);
     localStorage.setItem("theme", themeState);
   };

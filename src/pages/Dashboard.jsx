@@ -10,6 +10,7 @@ import {
 import ReusableProduct from "../components/ReusableProduct";
 import { useNavigate } from "react-router-dom";
 import { PriceContext } from "../utilities/PriceContext";
+import toast from "react-hot-toast";
 
 const Dashboard = () => {
   const [activeState, setActiveState] = useState("cart");
@@ -32,6 +33,16 @@ const Dashboard = () => {
   }, [totalPrice]);
 
   const handleCartItem = (product) => {
+    const matched = cards.find(
+      (card) => card.product_id === product.product_id
+    );
+    if (matched) {
+      return toast.error("Already In The Cart", {
+        position: "bottom-right",
+      });
+    }
+
+    toast.success("Added To Cart!!!");
     setCards([...cards, product]);
     setTotalCost((prev) => prev + product.price);
     localStorage.setItem("cart-list", JSON.stringify([...cards, product]));
@@ -72,6 +83,7 @@ const Dashboard = () => {
   };
 
   const handleRemove = (card) => {
+    toast.success("Successfully Removed From Cart");
     removeFromCart(card.product_id);
     const stored = getStoredCartList();
     const remaining = stored.filter(
@@ -82,7 +94,7 @@ const Dashboard = () => {
     const counterReal = parseInt(addCartCount) - 1;
     localStorage.setItem("count", counterReal);
 
-    setTotalPrice((prev) => prev - parseInt(card.price));
+    setTotalPrice((prev) => parseInt(prev) - parseInt(card.price));
     const minusTotal = parseInt(totalCost) - parseInt(card.price);
     localStorage.setItem("total-price", minusTotal);
   };

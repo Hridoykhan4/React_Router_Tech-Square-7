@@ -6,9 +6,8 @@ const ProductCards = () => {
   const [products, setProducts] = useState([]);
   const allProducts = useLoaderData();
   const { productCategory } = useParams();
-
   useEffect(() => {
-    if (typeof productCategory === "undefined" || productCategory === "all") {
+    if (!productCategory || productCategory === 'all') {
       setProducts(allProducts);
     } else {
       const matchedProducts = [...allProducts].filter(
@@ -16,12 +15,13 @@ const ProductCards = () => {
       );
       setProducts(matchedProducts);
     }
+
   }, [productCategory, allProducts]);
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      {products.map((product) => (
-        <Product key={product.product_id} product={product}></Product>
+    {products.map((product) => (
+        <Product  key={product.product_id} product={product}></Product>
       ))}
     </div>
   );

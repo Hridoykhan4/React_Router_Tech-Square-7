@@ -124,7 +124,7 @@ const Details = () => {
             have it all!
           </p>
 
-          <div className="flex flex-col items-center -mb-24 bg-white text-black w-[93%] gap-4 sm:w-[80%] mt-6  p-4  mx-auto sm:-mb-44 rounded">
+          <div className="flex sm:flex-row flex-col items-center -mb-24 bg-white text-black w-[93%] gap-4 sm:w-[80%] mt-6  p-4  mx-auto sm:-mb-44 rounded">
             <figure className="sm:w-[40%]">
               <img
                 src={product_image}

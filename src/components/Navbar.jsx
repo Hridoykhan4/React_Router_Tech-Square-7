@@ -82,29 +82,29 @@ const Navbar = () => {
         </div>
         <div className="navbar-end sm:gap-3 gap-1">
           <input
+            onChange={handleTheme}
             checked={theme === "forest"}
             type="checkbox"
-            onClick={handleTheme}
             className="toggle theme-controller"
           />
 
-          <div className="relative">
+          <div className="relative cursor-pointer">
             <details className=" dropdown">
               <summary className="fa-solid m-1  text-md bg-white/20 rounded-full p-2 fa-cart-shopping"></summary>
               <ul className="menu dropdown-content sm:w-52 w-36 right-2 bg-base-100/80 rounded-box z-1  p-2 shadow-sm">
                 <p className="font-bold">{addCartCount} Item in Cart</p>
                 <hr className="pb-2"/>
-                <Link className="btn btn-sm bg-[#9538E2] text-white" to="/dashboard">Dashboard</Link>
+                <Link className="btn self-start btn-sm bg-[#9538E2] text-white" to="/dashboard">Dashboard</Link>
               </ul>
             </details>
-            <span className="absolute font-bold text-lg -top-4 left-5">
+            <span className="absolute font-bold text-lg -top-3 left-6">
               {addCartCount}
             </span>
           </div>
 
           <div className="relative">
             <i className="fa-regular text-md  bg-white/30 rounded-full p-2 fa-heart"></i>
-            <span className="absolute -right-1 font-bold text-lg -top-2">
+            <span className="absolute right-1 font-bold text-lg -top-4">
               {addWishCount}
             </span>
           </div>

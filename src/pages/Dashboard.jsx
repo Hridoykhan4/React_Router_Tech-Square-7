@@ -26,8 +26,7 @@ const Dashboard = () => {
     setCards(storedItems);
     const storedItemsPrices = storedItems.map((item) => item.price);
     const sumOfPrices = storedItemsPrices.reduce((acc, val) => acc + val, 0);
-    setTotalCost(sumOfPrices.toFixed(2));
-
+    setTotalCost(sumOfPrices);
     const storedWish = getStoredWishList();
     setWishCards(storedWish);
   }, [totalPrice]);
@@ -93,7 +92,6 @@ const Dashboard = () => {
     setAddCartCount((prev) => prev - 1);
     const counterReal = parseInt(addCartCount) - 1;
     localStorage.setItem("count", counterReal);
-
     setTotalPrice((prev) => parseInt(prev) - parseInt(card.price));
     const minusTotal = parseInt(totalCost) - parseInt(card.price);
     localStorage.setItem("total-price", minusTotal);
@@ -102,7 +100,7 @@ const Dashboard = () => {
   return (
     <div>
       <ReusableBanner>
-        <div className="text-center bg-[#9538E2] text-white space-y-4 py-5">
+        <div className="text-center rounded bg-[#9538E2] text-white space-y-4 py-5">
           <h2 className="font-bold text-2xl md:text-3xl lg:text-3xl">
             Dashboard
           </h2>
